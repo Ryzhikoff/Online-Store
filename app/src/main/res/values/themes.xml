@@ -7,11 +7,30 @@
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="textInputStyle">@style/TextInputStyle</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationStyle</item>
     </style>
 
     <style name="Theme.OnlineStore" parent="Base.Theme.OnlineStore" />
 
     <style name="TextInputStyle">
         <item name="endIconDrawable">@drawable/icon_close_big</item>
+    </style>
+
+    <style name="BottomNavigationStyle" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">@color/white</item>
+        <item name="itemActiveIndicatorStyle">@style/ActiveIndicatorStyle</item>
+        <item name="itemIconTint">@color/bottom_bar_item_color_state</item>
+        <item name="itemTextColor">@color/bottom_bar_item_color_state</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemIconSize">@dimen/bottom_bar_icon_size</item>
+        <item name="itemTextAppearance">@style/LargeTitle</item>
+        <item name="itemTextAppearanceActiveBoldEnabled">false</item>
+        <item name="itemTextAppearanceInactive">@style/Caption</item>
+        <item name="itemTextAppearanceActive">@style/Caption</item>
+        <item name="colorOnSecondaryContainer">@color/pink</item>
+    </style>
+
+    <style name="ActiveIndicatorStyle" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@android:color/transparent</item>
     </style>
 </resources>
