@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_page_title_top">15dp</dimen>
+    <dimen name="margin_main_2">2dp</dimen>
+    <dimen name="margin_main_16">16dp</dimen>
+    <dimen name="margin_main_32">32dp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="error_border_width">1dp</dimen>
+</resources>

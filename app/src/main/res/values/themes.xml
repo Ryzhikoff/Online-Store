@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.OnlineStore" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="textInputStyle">@style/TextInputStyle</item>
+    </style>
+
+    <style name="Theme.OnlineStore" parent="Base.Theme.OnlineStore" />
+
+    <style name="TextInputStyle">
+        <item name="endIconDrawable">@drawable/icon_close_big</item>
+    </style>
+</resources>

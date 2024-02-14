@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_into">Вход</string>
+    <string name="button_inter">Войти</string>
+    <string name="input_phone_number">Номер телефона</string>
+    <string name="input_phone_name">Имя</string>
+    <string name="input_phone_surname">Фамилия</string>
+    <string name="notice_link"><u>условия программы лояльности</u></string>
+    <string name="notice_policy">Нажимая кнопку “Войти”, Вы принимаете</string>
+</resources>

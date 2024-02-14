@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseTextTheme" parent="TextAppearance.AppCompat" />
+
+    <style name="BaseMedium" parent="BaseTextTheme">
+        <item name="fontFamily">@font/sf_pro_display_medium</item>
+    </style>
+
+    <style name="BaseRegular" parent="BaseTextTheme">
+        <item name="fontFamily">@font/sf_pro_display_medium</item>
+    </style>
+
+    <style name="LargeTitle" parent="BaseMedium">
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">26sp</item>
+    </style>
+
+    <style name="Title1" parent="BaseMedium">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">20.8sp</item>
+    </style>
+
+    <style name="Title2" parent="BaseMedium">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">18.2sp</item>
+    </style>
+
+    <style name="Title3" parent="BaseMedium">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">15.6sp</item>
+    </style>
+
+    <style name="Title4" parent="BaseRegular">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">18.2sp</item>
+    </style>
+
+    <style name="Text" parent="BaseRegular">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">15.6sp</item>
+    </style>
+
+    <style name="Caption" parent="BaseRegular">
+        <item name="android:textSize">10sp</item>
+        <item name="lineHeight">11sp</item>
+    </style>
+
+    <style name="ButtonText1" parent="BaseMedium">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">15.6sp</item>
+    </style>
+
+    <style name="ButtonText2" parent="BaseMedium">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">18.2sp</item>
+    </style>
+
+    <style name="ElementText" parent="BaseRegular">
+        <item name="android:textSize">9sp</item>
+        <item name="lineHeight">9.9sp</item>
+    </style>
+
+    <style name="PriceText" parent="BaseMedium">
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">31.2sp</item>
+    </style>
+
+    <style name="PlaceholderText" parent="BaseRegular">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">19.09sp</item>
+    </style>
+
+    <style name="LinkText" parent="BaseRegular">
+        <item name="android:textSize">10sp</item>
+        <item name="lineHeight">11sp</item>
+    </style>
+
+</resources>
