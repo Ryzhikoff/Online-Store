@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.OnlineStore" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -22,7 +22,6 @@
         <item name="itemIconTint">@color/bottom_bar_item_color_state</item>
         <item name="itemTextColor">@color/bottom_bar_item_color_state</item>
         <item name="labelVisibilityMode">labeled</item>
-        <item name="itemIconSize">@dimen/bottom_bar_icon_size</item>
         <item name="itemTextAppearance">@style/LargeTitle</item>
         <item name="itemTextAppearanceActiveBoldEnabled">false</item>
         <item name="itemTextAppearanceInactive">@style/Caption</item>
@@ -32,5 +31,9 @@
 
     <style name="ActiveIndicatorStyle" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@android:color/transparent</item>
+    </style>
+
+    <style name="SpinnerStyle">
+        <item name="icon">@drawable/icon_down_arrow</item>
     </style>
 </resources>
