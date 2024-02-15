@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_catalog">Каталог</string>
+    <string name="label_filters">Фильтры</string>
+    <string name="tag_name_all">Смотреть все</string>
+
+    <string-array name="sorted_list">
+        <item>По популярности</item>
+        <item>По уменьшению цены</item>
+        <item>По возрастанию цены</item>
+    </string-array>
 </resources>

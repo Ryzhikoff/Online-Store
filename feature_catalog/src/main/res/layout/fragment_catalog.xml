@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/margin_16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/margin_16" />
 
     <TextView
         android:id="@+id/title"
@@ -11,8 +26,82 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_page_title_top"
         android:text="@string/title_catalog"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iconSortBy"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginTop="@dimen/margin_22"
+        android:src="@drawable/icon_sort_by"
+        app:layout_constraintStart_toStartOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:ignore="ContentDescription" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:dropDownSelector="@drawable/icon_down_arrow"
+        android:layout_marginStart="@dimen/margin_8"
+        app:layout_constraintBottom_toBottomOf="@id/iconSortBy"
+        app:layout_constraintStart_toEndOf="@id/iconSortBy"
+        app:layout_constraintTop_toTopOf="@id/iconSortBy" />
+
+    <ImageView
+        android:id="@+id/iconFilter"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginTop="@dimen/margin_22"
+        android:layout_marginEnd="@dimen/margin_8"
+        android:src="@drawable/icon_filter"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintEnd_toStartOf="@id/tvFilters"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvFilters"
+        style="@style/Title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_filters"
+        app:layout_constraintEnd_toEndOf="@id/end"
+        app:layout_constraintTop_toTopOf="@id/iconFilter"
+        app:layout_constraintBottom_toBottomOf="@id/iconFilter"/>
+    
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:constraint_referenced_ids="iconSortBy, spinner, iconFilter, tvFilters"
+        android:orientation="horizontal"
+        app:barrierDirection="bottom"/>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_17"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        app:layout_constraintStart_toStartOf="@id/start"
+        app:layout_constraintEnd_toEndOf="@id/end">
+
+        <LinearLayout
+            android:id="@+id/tagContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.example.catalog.customview.TagView
+                android:id="@+id/tagView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:tagViewName="@string/tag_name_all"/>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
