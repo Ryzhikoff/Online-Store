@@ -3,6 +3,10 @@
     <string name="title_catalog">Каталог</string>
     <string name="label_filters">Фильтры</string>
     <string name="tag_name_all">Смотреть все</string>
+    <string name="tag_name_face">Лицо</string>
+    <string name="tag_name_body">Тело</string>
+    <string name="tag_name_suntan">Загар</string>
+    <string name="tag_name_mask">Маски</string>
 
     <string-array name="sorted_list">
         <item>По популярности</item>

@@ -1,4 +1,4 @@
-package com.example.catalog.customview
+package com.example.catalog.ui.customview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -15,12 +15,16 @@ class TagView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     private val binding: TagViewBinding
+    var tagName = ""
 
     init {
         binding = TagViewBinding.bind(inflate(context, R.layout.tag_view, this))
         if (attrs != null) {
             val typeArray = context.obtainStyledAttributes(attrs, R.styleable.TagView)
             setName(typeArray.getString(R.styleable.TagView_tagViewName) ?: "")
+
+            isSelected = typeArray.getBoolean(R.styleable.TagView_tagViewIsSelect, false)
+            tagName = typeArray.getString(R.styleable.TagView_tagViewTagName) ?: ""
             typeArray.recycle()
         }
     }
@@ -29,7 +33,9 @@ class TagView @JvmOverloads constructor(
     constructor(
         context: Context,
         name: String,
+        tagName: String,
     ) : this(context) {
+        this.tagName = tagName
         setName(name)
     }
 
@@ -47,7 +53,6 @@ class TagView @JvmOverloads constructor(
             binding.name.setTextAppearance(com.example.core.R.style.ButtonText2)
             binding.name.setTextColor(ContextCompat.getColor(context, com.example.core.R.color.gray))
         }
-
 
         super.setSelected(selected)
     }

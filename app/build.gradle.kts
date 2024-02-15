@@ -50,7 +50,6 @@ dependencies {
 
     //Fragment navigation
     val navigationVersion = "2.7.7"
-    implementation("androidx.navigation:navigation-fragment:$navigationVersion")
     implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
 
@@ -59,7 +58,14 @@ dependencies {
     implementation("com.google.dagger:dagger:$daggerVersion")
     ksp("com.google.dagger:dagger-compiler:$daggerVersion")
 
+    //Retrofit
+    val retrofitVersion = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
     implementation(project(":setting_provider"))
+    implementation(project(":remote"))
     implementation(project(":feature_registration"))
     implementation(project(":feature_home"))
     implementation(project(":feature_catalog"))

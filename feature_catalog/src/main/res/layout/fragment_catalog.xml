@@ -44,8 +44,8 @@
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:dropDownSelector="@drawable/icon_down_arrow"
         android:layout_marginStart="@dimen/margin_8"
+        android:dropDownSelector="@drawable/icon_down_arrow"
         app:layout_constraintBottom_toBottomOf="@id/iconSortBy"
         app:layout_constraintStart_toEndOf="@id/iconSortBy"
         app:layout_constraintTop_toTopOf="@id/iconSortBy" />
@@ -57,8 +57,8 @@
         android:layout_marginTop="@dimen/margin_22"
         android:layout_marginEnd="@dimen/margin_8"
         android:src="@drawable/icon_filter"
-        app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintEnd_toStartOf="@id/tvFilters"
+        app:layout_constraintTop_toBottomOf="@id/title"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -67,41 +67,91 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_filters"
+        app:layout_constraintBottom_toBottomOf="@id/iconFilter"
         app:layout_constraintEnd_toEndOf="@id/end"
-        app:layout_constraintTop_toTopOf="@id/iconFilter"
-        app:layout_constraintBottom_toBottomOf="@id/iconFilter"/>
-    
+        app:layout_constraintTop_toTopOf="@id/iconFilter" />
+
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:constraint_referenced_ids="iconSortBy, spinner, iconFilter, tvFilters"
         android:orientation="horizontal"
-        app:barrierDirection="bottom"/>
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="iconSortBy, spinner, iconFilter, tvFilters" />
 
-    <ScrollView
+    <HorizontalScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_17"
-        app:layout_constraintTop_toBottomOf="@id/barrier"
+        android:orientation="horizontal"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="@id/end"
         app:layout_constraintStart_toStartOf="@id/start"
-        app:layout_constraintEnd_toEndOf="@id/end">
+        app:layout_constraintTop_toBottomOf="@id/barrier">
 
         <LinearLayout
             android:id="@+id/tagContainer"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.example.catalog.customview.TagView
-                android:id="@+id/tagView"
+            <com.example.catalog.ui.customview.TagView
+                android:id="@+id/tagViewAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:tagViewName="@string/tag_name_all"/>
+                app:tagViewTagName="all"
+                app:tagViewIsSelect="true"
+                app:tagViewName="@string/tag_name_all" />
+
+            <com.example.catalog.ui.customview.TagView
+                android:id="@+id/tagViewFace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_6"
+                app:tagViewTagName="face"
+                app:tagViewIsSelect="false"
+                app:tagViewName="@string/tag_name_face" />
+
+            <com.example.catalog.ui.customview.TagView
+                android:id="@+id/tagViewBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_6"
+                app:tagViewTagName="body"
+                app:tagViewIsSelect="false"
+                app:tagViewName="@string/tag_name_body" />
+
+            <com.example.catalog.ui.customview.TagView
+                android:id="@+id/tagViewSuntan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_6"
+                app:tagViewTagName="suntan"
+                app:tagViewIsSelect="false"
+                app:tagViewName="@string/tag_name_suntan" />
+
+            <com.example.catalog.ui.customview.TagView
+                android:id="@+id/tagViewMask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_6"
+                app:tagViewTagName="mask"
+                app:tagViewIsSelect="false"
+                app:tagViewName="@string/tag_name_mask" />
 
         </LinearLayout>
-    </ScrollView>
+    </HorizontalScrollView>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_32"
+        android:layout_marginEnd="@dimen/margin_9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/scrollView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

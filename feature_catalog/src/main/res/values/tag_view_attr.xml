@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="TagView">
         <attr name="tagViewName" format="string"/>
+        <attr name="tagViewTagName" format="string"/>
         <attr name="tagViewIsSelect" format="boolean"/>
     </declare-styleable>
 </resources>
