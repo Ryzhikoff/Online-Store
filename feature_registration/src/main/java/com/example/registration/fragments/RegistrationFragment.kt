@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import com.example.core.NavigationManager
+import com.example.core.interfaces.NavigationManager
 import com.example.registration.R
 import com.example.registration.databinding.FragmentRegistrationBinding
 import com.example.registration.di.RegistrationComponentProvider

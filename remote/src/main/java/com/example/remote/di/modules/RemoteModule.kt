@@ -1,6 +1,8 @@
 package com.example.remote.di.modules
 
 import com.example.remote.data.api.ProductApi
+import com.example.remote.data.repository.ProductRepository
+import com.example.remote.data.repository.ProductRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -31,4 +33,9 @@ class RemoteModule {
     @Singleton
     @Provides
     fun provideProductApi(retrofit: Retrofit): ProductApi = retrofit.create(ProductApi::class.java)
+
+    @Singleton
+    @Provides
+    fun provideProductRepository(retrofitService: ProductApi): ProductRepository =
+        ProductRepositoryImpl(retrofitService)
 }

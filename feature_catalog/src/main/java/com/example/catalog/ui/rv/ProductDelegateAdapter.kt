@@ -3,12 +3,15 @@ package com.example.catalog.ui.rv
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.catalog.models.ProductUi
 import com.example.catalog.ui.customview.product_card.ProductCardView
+import com.example.core.interfaces.ProductAdapterItem
+import com.example.core.models.ProductUi
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
 
 class ProductDelegateAdapter(
-    private val fragment: Fragment
+    private val fragment: Fragment,
+    private val onFavoriteClickListener: ProductAdapter.OnFavoriteClickListener,
+    private val onItemClickListener: ProductAdapter.OnItemClickListener
 ) : AbsListItemAdapterDelegate<ProductUi, ProductAdapterItem, ProductDelegateAdapter.ViewHolder>() {
 
 
@@ -32,6 +35,12 @@ class ProductDelegateAdapter(
     inner class ViewHolder(private val itemProduct: ProductCardView) : RecyclerView.ViewHolder(itemProduct) {
         fun init(productUi: ProductUi) {
             itemProduct.init(fragment, productUi)
+            itemProduct.setOnFavoriteClickListener { productUiClicked ->
+                onFavoriteClickListener.onClick(productUiClicked)
+            }
+            itemProduct.setOnClickListener {
+                onItemClickListener.onClick(productUi)
+            }
         }
     }
 }

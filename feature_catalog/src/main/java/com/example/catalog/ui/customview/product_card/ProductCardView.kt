@@ -6,12 +6,13 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.example.catalog.R
 import com.example.catalog.databinding.ProductCardBinding
-import com.example.catalog.models.ProductUi
-import com.example.catalog.ui.customview.product_card.viewpager.VpAdapter
+import com.example.core.ui.viewpager.VpAdapter
+import com.example.core.models.ProductUi
 
-class ProductCardView (context: Context) : ConstraintLayout(context) {
+class ProductCardView(context: Context) : ConstraintLayout(context) {
 
     private val binding: ProductCardBinding
+    private var productUi: ProductUi? = null
 
     init {
         binding = ProductCardBinding.bind(inflate(context, R.layout.product_card, this))
@@ -20,11 +21,12 @@ class ProductCardView (context: Context) : ConstraintLayout(context) {
     constructor(
         fragment: Fragment,
         productUi: ProductUi
-    ): this(fragment.requireContext()) {
+    ) : this(fragment.requireContext()) {
         init(fragment, productUi)
     }
 
     fun init(fragment: Fragment, productUi: ProductUi) {
+        this.productUi = productUi
         setData(productUi)
         initViewpager(fragment, productUi)
     }
@@ -35,11 +37,10 @@ class ProductCardView (context: Context) : ConstraintLayout(context) {
 
         newPrice.text = productUi.newPrice.toString()
         val discountText = "-${productUi.discount}%"
+
         discount.text = discountText
         name.text = productUi.title
         subtitle.text = productUi.subtitle
-
-
 
         productUi.rating?.let {
             rating.text = productUi.rating.toString()
@@ -48,8 +49,7 @@ class ProductCardView (context: Context) : ConstraintLayout(context) {
             ratingContainer.visibility = View.VISIBLE
         }
 
-
-
+        addFavoriteButton.isSelected = productUi.isFavorite
     }
 
     private fun initViewpager(fragment: Fragment, productUi: ProductUi) {
@@ -59,5 +59,13 @@ class ProductCardView (context: Context) : ConstraintLayout(context) {
 
         binding.indicator.setViewPager(binding.viewPager)
         adapter.registerAdapterDataObserver(binding.indicator.adapterDataObserver)
+    }
+
+    fun setOnFavoriteClickListener(onClick: (ProductUi) -> Unit) {
+        binding.addFavoriteButton.setOnClickListener {
+            productUi!!.isFavorite = !productUi!!.isFavorite
+            binding.addFavoriteButton.isSelected = !binding.addFavoriteButton.isSelected
+            onClick(productUi!!)
+        }
     }
 }

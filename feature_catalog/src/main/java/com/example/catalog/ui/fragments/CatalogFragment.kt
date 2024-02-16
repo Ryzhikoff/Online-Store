@@ -2,23 +2,28 @@ package com.example.catalog.ui.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.catalog.R
 import com.example.catalog.databinding.FragmentCatalogBinding
 import com.example.catalog.di.CatalogComponentProvider
-import com.example.catalog.models.ProductUi
 import com.example.catalog.ui.CatalogViewModel
 import com.example.catalog.ui.customview.TagView
 import com.example.catalog.ui.rv.ProductAdapter
-import com.example.catalog.ui.rv.ProductAdapterItem
+import com.example.core.interfaces.ProductAdapterItem
 import com.example.catalog.ui.rv.SpacingItemDecoration
 import com.example.catalog.utils.CatalogViewModelFactory
+import com.example.core.models.ProductUi
+import com.example.details.ui.DetailsFragment.Companion.KEY_PRODUCT_UI
 import com.example.remote.models.doOnError
 import com.example.remote.models.updateAdapterList
 import kotlinx.coroutines.launch
@@ -27,13 +32,14 @@ import javax.inject.Inject
 class CatalogFragment : Fragment(R.layout.fragment_catalog) {
     private var _binding: FragmentCatalogBinding? = null
     private val binding get() = _binding!!
-    private val productAdapter = ProductAdapter(this)
+    private lateinit var productAdapter: ProductAdapter
 
     @Inject
     lateinit var viewModelFactory: CatalogViewModelFactory
 
     private val cashedItems = mutableListOf<ProductUi>()
     private val viewModel: CatalogViewModel by viewModels { viewModelFactory }
+
     // соответствует позиции в списке для спиннера
     private var currentTypeSort = -1
 
@@ -48,13 +54,19 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
             )
         }
     }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        (requireActivity().application as CatalogComponentProvider)
+            .getCatalogComponentProvider()
+            .inject(this)
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentCatalogBinding.bind(view)
 
-        (requireActivity().application as CatalogComponentProvider)
-            .getCatalogComponentProvider()
-            .inject(this)
 
         viewModel.getProductList()
         initRecyclerView()
@@ -81,11 +93,31 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
     @SuppressLint("NotifyDataSetChanged")
     private fun updateAdapterList(products: List<ProductUi> = cashedItems) {
         productAdapter.submitList(products)
-//        productAdapter.items = products
-//        productAdapter.notifyDataSetChanged()
     }
 
+    private val onFavoriteClickListener =
+        object : ProductAdapter.OnFavoriteClickListener {
+            override fun onClick(productUi: ProductUi) {
+                if (productUi.isFavorite) {
+                    viewModel.saveToFavorite(productUi)
+                } else {
+                    viewModel.deleteFromFavorites(productUi)
+                }
+            }
+        }
+
+    private val onItemClickListener =
+        object : ProductAdapter.OnItemClickListener {
+            override fun onClick(productUi: ProductUi) {
+                navigateToDetails(productUi)
+            }
+
+        }
+
     private fun initRecyclerView() {
+
+        productAdapter = ProductAdapter(this, onFavoriteClickListener, onItemClickListener)
+
         binding.recyclerView.apply {
             adapter = productAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
@@ -99,6 +131,16 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
     }
 
+    private fun navigateToDetails(productUi: ProductUi) {
+        findNavController()
+            .navigate(
+                R.id.action_catalogFragment_to_detailsFragment,
+                bundleOf(
+                    Pair(KEY_PRODUCT_UI, productUi)
+                )
+            )
+    }
+
     private fun setTagsClickListeners() = with(binding) {
         tagViewAll.setOnClickListener { processingClick(it as TagView) }
         tagViewFace.setOnClickListener { processingClick(it as TagView) }
@@ -108,7 +150,7 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
     }
 
     private fun processingClick(tagView: TagView) {
-        tagViews.filter { it.tagName != tagView.tagName}.map { it.isSelected = false }
+        tagViews.filter { it.tagName != tagView.tagName }.map { it.isSelected = false }
         tagView.isSelected = !tagView.isSelected
 
 
@@ -148,7 +190,7 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
     private fun sortedList(typeSort: Int = currentTypeSort, items: List<ProductAdapterItem>): List<ProductUi> {
         val filteredList = items.filterIsInstance<ProductUi>()
-        return  when (typeSort) {
+        return when (typeSort) {
             0 -> filteredList.sortedByDescending { it.rating }
             1 -> filteredList.sortedByDescending { it.newPrice }
             2 -> filteredList.sortedBy { it.newPrice }

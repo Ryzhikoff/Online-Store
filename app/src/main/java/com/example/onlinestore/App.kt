@@ -4,7 +4,11 @@ import android.app.Application
 import com.example.catalog.di.CatalogComponent
 import com.example.catalog.di.CatalogComponentProvider
 import com.example.catalog.di.DaggerCatalogComponent
-import com.example.catalog.di.modules.UseCaseModule
+import com.example.database.di.DatabaseModule
+import com.example.database.di.DatabaseUseCaseModule
+import com.example.details.di.DaggerDetailsComponent
+import com.example.details.di.DetailsComponent
+import com.example.details.di.modules.DetailsComponentProvider
 import com.example.onlinestore.di.AppComponent
 import com.example.onlinestore.di.AppComponentProvider
 import com.example.onlinestore.di.DaggerAppComponent
@@ -12,19 +16,27 @@ import com.example.registration.di.DaggerRegistrationComponent
 import com.example.registration.di.RegistrationComponent
 import com.example.registration.di.RegistrationComponentProvider
 import com.example.remote.di.modules.RemoteModule
-import com.example.remote.di.modules.ProductRepositoryModule
+import com.example.remote.di.modules.RemoteUseCaseModule
 import com.example.setting_provider.di.SettingProviderModule
 
-class App : Application(), RegistrationComponentProvider, AppComponentProvider, CatalogComponentProvider {
+class App : Application(),
+    RegistrationComponentProvider,
+    AppComponentProvider,
+    CatalogComponentProvider,
+    DetailsComponentProvider {
     private val settingProviderModule by lazy {
         SettingProviderModule(this)
     }
 
-    private val productRepositoryModule by lazy {
-        ProductRepositoryModule()
-    }
     private val remoteModule by lazy {
         RemoteModule()
+    }
+    private val databaseModule by lazy {
+        DatabaseModule(this)
+    }
+
+    private val databaseUseCaseModule by lazy {
+        DatabaseUseCaseModule()
     }
 
     override fun getRegistrationComponent(): RegistrationComponent =
@@ -40,8 +52,16 @@ class App : Application(), RegistrationComponentProvider, AppComponentProvider, 
     override fun getCatalogComponentProvider(): CatalogComponent =
         DaggerCatalogComponent.builder()
             .remoteModule(remoteModule)
-            .productRepositoryModule(productRepositoryModule)
-            .useCaseModule(UseCaseModule())
+            .remoteUseCaseModule(RemoteUseCaseModule())
+            .databaseModule(databaseModule)
+            .databaseUseCaseModule(databaseUseCaseModule)
             .build()
+
+    override fun getDetailsComponent(): DetailsComponent =
+        DaggerDetailsComponent.builder()
+            .databaseModule(databaseModule)
+            .databaseUseCaseModule(databaseUseCaseModule)
+            .build()
+
 
 }
