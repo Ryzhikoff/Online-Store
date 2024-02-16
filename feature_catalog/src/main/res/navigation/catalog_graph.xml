@@ -9,5 +9,14 @@
         android:id="@+id/catalogFragment"
         android:name="com.example.catalog.ui.fragments.CatalogFragment"
         android:label="CatalogFragment"
-        tools:layout="@layout/fragment_catalog"/>
+        tools:layout="@layout/fragment_catalog">
+        <action
+            android:id="@+id/action_catalogFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.details.ui.DetailsFragment"
+        android:label="DetailsFragment"
+        tools:layout="@layout/fragment_details"/>
 </navigation>

@@ -1,14 +1,25 @@
 package com.example.catalog.ui.rv
 
-import android.annotation.SuppressLint
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DiffUtil
+import com.example.core.interfaces.ProductAdapterItem
+import com.example.core.models.ProductUi
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 
-class ProductAdapter(private val fragment: Fragment) : ListDelegationAdapter<List<ProductAdapterItem>>() {
+class ProductAdapter(
+    fragment: Fragment,
+    onFavoriteClickListener: OnFavoriteClickListener,
+    onItemClickListener: OnItemClickListener
+) : ListDelegationAdapter<List<ProductAdapterItem>>() {
 
     init {
-        delegatesManager.addDelegate(ProductDelegateAdapter(fragment))
+        delegatesManager.addDelegate(
+            ProductDelegateAdapter(
+                fragment,
+                onFavoriteClickListener,
+                onItemClickListener
+            )
+        )
     }
 
     fun submitList(newList: List<ProductAdapterItem>) {
@@ -32,5 +43,13 @@ class ProductAdapter(private val fragment: Fragment) : ListDelegationAdapter<Lis
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
             oldList[oldItemPosition] == newList[newItemPosition]
 
+    }
+
+    interface OnItemClickListener{
+        fun onClick(productUi: ProductUi)
+    }
+
+    interface OnFavoriteClickListener {
+        fun onClick(productUi: ProductUi)
     }
 }

@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.example.core.NavigationManager
+import com.example.core.interfaces.NavigationManager
 import com.example.onlinestore.databinding.ActivityMainBinding
 import com.example.onlinestore.di.AppComponentProvider
 import com.example.setting_provider.SettingProvider
