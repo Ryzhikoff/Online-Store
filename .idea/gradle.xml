@@ -4,19 +4,35 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/buildSrc" name="buildSrc">
+                <projects>
+                  <project path="$PROJECT_DIR$/buildSrc" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/database" />
             <option value="$PROJECT_DIR$/feature_account" />
             <option value="$PROJECT_DIR$/feature_bag" />
             <option value="$PROJECT_DIR$/feature_catalog" />
+            <option value="$PROJECT_DIR$/feature_details" />
             <option value="$PROJECT_DIR$/feature_discount" />
+            <option value="$PROJECT_DIR$/feature_favorites" />
             <option value="$PROJECT_DIR$/feature_home" />
             <option value="$PROJECT_DIR$/feature_registration" />
+            <option value="$PROJECT_DIR$/remote" />
             <option value="$PROJECT_DIR$/setting_provider" />
           </set>
         </option>

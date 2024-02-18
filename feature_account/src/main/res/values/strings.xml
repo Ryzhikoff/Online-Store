@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_account">Личный кабинет</string>
+    <string name="favorites">Избранное</string>
+    <string name="shops">Магазины</string>
+    <string name="feedback">Обратная связь</string>
+    <string name="offer">Оферта</string>
+    <string name="refund">Возврат товара</string>
+    <string name="exit">Выйти</string>
+    
+    <string-array name="products">
+        <item>товаров</item>
+        <item>товар</item>
+        <item>товара</item>
+    </string-array>
 </resources>

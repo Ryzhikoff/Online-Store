@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="favorites">Избранное</string>
+    <string name="products">Товары</string>
+    <string name="brands">Бренды</string>
+    <string name="products_tag">products</string>
+    <string name="brands_tag">brands</string>
+</resources>

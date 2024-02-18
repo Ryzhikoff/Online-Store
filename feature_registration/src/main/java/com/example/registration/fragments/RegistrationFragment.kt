@@ -12,11 +12,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import com.example.core.NavigationManager
+import com.example.core.interfaces.NavigationManager
 import com.example.registration.R
 import com.example.registration.databinding.FragmentRegistrationBinding
 import com.example.registration.di.RegistrationComponentProvider
 import com.example.setting_provider.SettingProvider
+import com.example.setting_provider.UserData
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import ru.tinkoff.decoro.MaskImpl
@@ -128,8 +129,15 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         binding.buttonInter.isEnabled = isCorrectName && isCorrectSurname && isCorrectPhoneNumber
     }
 
-    private fun setClickListener() {
-        binding.buttonInter.setOnClickListener {
+    private fun setClickListener() = with(binding) {
+        buttonInter.setOnClickListener {
+            settingProvider.saveUserData(
+                UserData(
+                    name = inputName.text.toString(),
+                    surname = inputSurname.text.toString(),
+                    phoneNumber = inputPhoneNumber.text.toString()
+                )
+            )
             settingProvider.registrationComplete()
             (requireActivity() as NavigationManager).startBottomNavigation()
         }

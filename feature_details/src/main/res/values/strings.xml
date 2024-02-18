@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_description">Описание</string>
+    <string name="button_hide">Скрыть</string>
+    <string name="button_show">Показать</string>
+    <string name="text_characteristics">Характеристики</string>
+    <string name="text_compound">Состав</string>
+    <string name="button_add">Добавить в корзину</string>
+    <string name="avaliable">Доступно для заказа %1$s</string>
+
+    <string-array name="counters">
+        <item>штук</item>
+        <item>штука</item>
+        <item>штуки</item>
+    </string-array>
+
+    <string-array name="feedbacks">
+        <item>отзывов</item>
+        <item>отзыв</item>
+        <item>отзыва</item>
+    </string-array>
+
+
+</resources>

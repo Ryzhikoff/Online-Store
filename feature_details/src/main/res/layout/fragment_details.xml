@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginStart="@dimen/margin_21"
+        android:layout_marginTop="@dimen/margin_14"
+        android:background="@android:color/transparent"
+        android:src="@drawable/icon_left_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/sharedButton"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginTop="@dimen/margin_14"
+        android:layout_marginEnd="@dimen/margin_14"
+        android:background="@android:color/transparent"
+        android:src="@drawable/icon_send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="backButton, sharedButton" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/detail_image_height"
+                android:layout_marginStart="@dimen/margin_21"
+                android:layout_marginEnd="@dimen/margin_14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="#D3E4F4" />
+
+            <ImageButton
+                android:id="@+id/addFavoriteButton"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_marginEnd="@dimen/margin_2"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_heart_state"
+                app:layout_constraintEnd_toEndOf="@id/viewPager"
+                app:layout_constraintTop_toTopOf="@id/viewPager"
+                app:tint="@color/pink"
+                tools:ignore="ContentDescription" />
+
+            <ImageButton
+                android:id="@+id/questionButton"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_question"
+                app:layout_constraintBottom_toBottomOf="@id/viewPager"
+                app:layout_constraintStart_toStartOf="@id/viewPager"
+                tools:ignore="ContentDescription" />
+
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginTop="@dimen/margin_16"
+                app:ci_animator="@animator/viewpager_indicator_animator"
+                app:ci_drawable="@drawable/indicator_selected"
+                app:ci_drawable_unselected="@drawable/indicator_unselected"
+                app:ci_height="@dimen/viewpager_indicator_size_large"
+                app:ci_width="@dimen/viewpager_indicator_size_large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewPager" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/margin_16" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/margin_16" />
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/Title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/indicator"
+                tools:text="A`PIEU" />
+
+            <TextView
+                android:id="@+id/subtitle"
+                style="@style/LargeTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                tools:text="Пенка для умывания`A`PIEU` `DEEP CLEAN` 200 мл" />
+
+            <TextView
+                android:id="@+id/available"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/subtitle"
+                tools:text="Доступно для заказа 30 штук" />
+
+            <View
+                android:id="@+id/borderLine"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/error_border_width"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@color/light_gray"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/available" />
+
+            <LinearLayout
+                android:id="@+id/ratingContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:gravity="start|center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/borderLine"
+                tools:visibility="visible">
+
+                <com.example.details.ui.cistomview.StarsView
+                    android:id="@+id/starsView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/rating"
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:textColor="@color/gray"
+                    tools:text="4.3" />
+
+                <View
+                    android:layout_width="@dimen/dot_size"
+                    android:layout_height="@dimen/dot_size"
+                    android:layout_marginHorizontal="@dimen/margin_6"
+                    android:background="@drawable/icon_dot"
+                    android:backgroundTint="@color/gray" />
+
+                <TextView
+                    android:id="@+id/feedbacks"
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray"
+                    tools:text="4 отзыва" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/newPrice"
+                style="@style/PriceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_5"
+                android:layout_marginTop="@dimen/margin_16"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/ratingContainer"
+                tools:text="549 P" />
+
+            <TextView
+                android:id="@+id/oldPrice"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_11"
+                android:textColor="@color/gray"
+                app:layout_constraintBottom_toBottomOf="@id/newPrice"
+                app:layout_constraintStart_toEndOf="@id/newPrice"
+                app:layout_constraintTop_toTopOf="@id/newPrice"
+                tools:text="899 P" />
+
+            <View
+                android:id="@+id/lineView"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:rotation="-10"
+                app:layout_constraintBottom_toBottomOf="@id/oldPrice"
+                app:layout_constraintEnd_toEndOf="@id/oldPrice"
+                app:layout_constraintStart_toStartOf="@id/oldPrice"
+                app:layout_constraintTop_toTopOf="@id/oldPrice" />
+
+            <TextView
+                android:id="@+id/discount"
+                style="@style/ElementText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_11"
+                android:background="@drawable/product_card_discount_background"
+                android:paddingHorizontal="@dimen/padding_6"
+                android:paddingVertical="@dimen/padding_3"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/newPrice"
+                app:layout_constraintStart_toEndOf="@id/oldPrice"
+                app:layout_constraintTop_toTopOf="@id/newPrice"
+                tools:text="-35%" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                style="@style/Title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_24"
+                android:text="@string/text_description"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/newPrice" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/brandButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:background="@drawable/input_field_background"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription">
+
+                <TextView
+                    android:id="@+id/brandButtonName"
+                    style="@style/Title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_15"
+                    android:layout_marginStart="@dimen/margin_9"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="A`PIEU" />
+
+                <ImageView
+                    android:id="@+id/rightArrow"
+                    android:layout_width="@dimen/brand_button_icon_size"
+                    android:layout_height="@dimen/brand_button_icon_size"
+                    android:src="@drawable/icon_right_arrow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/description"
+                style="@style/Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:textColor="@color/dark"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/brandButton"
+                tools:text="Пенка для лица Глубокое очищение содержит минеральную воду и соду, способствует глубокому очищению пор от различных загрязнений, контролирует работу сальных желез, сужает поры. Обладает мягким антисептическим действием, не пересушивая кожу. Минеральная вода тонизирует и смягчает кожу." />
+
+            <TextView
+                android:id="@+id/hideAndShowDescription"
+                style="@style/ButtonText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingTop="@dimen/margin_10"
+                android:text="@string/button_hide"
+                android:textAllCaps="false"
+                android:textColor="@color/gray"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/description" />
+
+            <TextView
+                android:id="@+id/characteristics"
+                style="@style/Title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_34"
+                android:text="@string/text_characteristics"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/hideAndShowDescription" />
+
+            <LinearLayout
+                android:id="@+id/characteristicsContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/characteristics" />
+
+            <TextView
+                android:id="@+id/ingredientsTitle"
+                style="@style/Title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_34"
+                android:text="@string/text_compound"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/characteristicsContainer" />
+
+            <ImageButton
+                android:id="@+id/copyButton"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_copy"
+                app:layout_constraintBottom_toBottomOf="@id/ingredientsTitle"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintTop_toTopOf="@id/ingredientsTitle"
+                app:tint="@color/gray"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/ingredients"
+                style="@style/Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/dark"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/ingredientsTitle"
+                tools:text="Water, Propylene Glycol, Dipropylene Glycol, Lauric acid, Myristic Acid, Potassium Hydroxide, Lauryl Hydroxysultaine, Potassium Cocoate, Potassium Cocoyl Glycinate, Sodium Chloride, Glycerin, Phenoxyethanol, Chlorphenesin, Fragrance, Caprylyl Glycol, Ethylhexylglycerin, Capric acid, Palmitic Acid, Disodium EDTA, Sodium Bicarbonate, Cocamidopropyl Betaine, Butylene Glycol." />
+
+            <TextView
+                android:id="@+id/hideAndShowIngredients"
+                style="@style/ButtonText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingTop="@dimen/margin_10"
+                android:text="@string/button_show"
+                android:textAllCaps="false"
+                android:textColor="@color/gray"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/ingredients" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/addButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_32"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:background="@drawable/product_card_discount_background"
+                android:paddingHorizontal="@dimen/margin_16"
+                android:paddingTop="@dimen/margin_17"
+                android:paddingBottom="@dimen/margin_16"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintTop_toBottomOf="@id/hideAndShowIngredients">
+
+                <TextView
+                    android:id="@+id/newPriceInButton"
+                    style="@style/ButtonText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="549P" />
+
+                <TextView
+                    android:id="@+id/oldPriceInButton"
+                    style="@style/Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:textColor="@color/light_pink"
+                    app:layout_constraintBottom_toBottomOf="@id/newPriceInButton"
+                    app:layout_constraintStart_toEndOf="@id/newPriceInButton"
+                    app:layout_constraintTop_toTopOf="@id/newPriceInButton"
+                    tools:text="899 P" />
+
+                <View
+                    android:id="@+id/lineViewInButton"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/light_pink"
+                    android:rotation="-10"
+                    app:layout_constraintBottom_toBottomOf="@id/oldPriceInButton"
+                    app:layout_constraintEnd_toEndOf="@id/oldPriceInButton"
+                    app:layout_constraintStart_toStartOf="@id/oldPriceInButton"
+                    app:layout_constraintTop_toTopOf="@id/oldPriceInButton" />
+
+                <TextView
+                    android:id="@+id/tvAddButton"
+                    style="@style/ButtonText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_add"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

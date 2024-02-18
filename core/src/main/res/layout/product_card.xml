@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/product_card_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/imagePlaceholder"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_image_placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1dp"
+            app:layout_constraintBottom_toTopOf="@id/indicator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            app:ci_animator="@animator/viewpager_indicator_animator"
+            app:ci_drawable="@drawable/indicator_selected"
+            app:ci_drawable_unselected="@drawable/indicator_unselected"
+            app:ci_height="@dimen/viewpager_indicator_size_small"
+            app:ci_width="@dimen/viewpager_indicator_size_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/addFavoriteButton"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:background="@android:color/transparent"
+            android:src="@drawable/icon_heart_state"
+            android:layout_marginTop="@dimen/margin_6"
+            android:layout_marginEnd="@dimen/margin_6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/pink"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/oldPrice"
+        style="@style/ElementText"
+        android:textColor="@color/gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_6"
+        app:layout_constraintTop_toBottomOf="@id/imagePlaceholder"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="749 P"/>
+
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:rotation="-10"
+        app:layout_constraintTop_toTopOf="@id/oldPrice"
+        app:layout_constraintStart_toStartOf="@id/oldPrice"
+        app:layout_constraintEnd_toEndOf="@id/oldPrice"
+        app:layout_constraintBottom_toBottomOf="@id/oldPrice"/>
+
+    <TextView
+        android:id="@+id/newPrice"
+        style="@style/Title2"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginStart="@dimen/margin_6"
+        app:layout_constraintTop_toBottomOf="@id/oldPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="489 P"/>
+
+    <TextView
+        android:id="@+id/discount"
+        style="@style/ElementText"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/padding_6"
+        android:paddingVertical="@dimen/padding_3"
+        android:background="@drawable/product_card_discount_background"
+        android:layout_marginStart="@dimen/margin_8"
+        app:layout_constraintStart_toEndOf="@id/newPrice"
+        app:layout_constraintTop_toTopOf="@id/newPrice"
+        app:layout_constraintBottom_toBottomOf="@id/newPrice"
+        tools:text="-35%"/>
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/Title3"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginStart="@dimen/margin_6"
+        app:layout_constraintTop_toBottomOf="@id/newPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="ESFOLIO"/>
+
+    <TextView
+        android:id="@+id/subtitle"
+        style="@style/Caption"
+        android:textColor="@color/dark_gray"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:lines="3"
+        android:layout_marginHorizontal="@dimen/margin_6"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Салфетки для лица`DECO.` матирующие с экстрактом зеленого чая 100 шт"/>
+
+    <LinearLayout
+        android:id="@+id/ratingContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        android:layout_marginStart="@dimen/margin_6"
+        android:layout_marginTop="@dimen/margin_4"
+        android:gravity="center|start"
+        tools:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/subtitle">
+        
+        <ImageView
+            android:layout_width="@dimen/icon_size_small"
+            android:layout_height="@dimen/icon_size_small"
+            android:src="@drawable/icon_small_star"
+            tools:ignore="ContentDescription" />
+        
+        <TextView
+            android:id="@+id/rating"
+            style="@style/ElementText"
+            android:layout_marginStart="@dimen/margin_2"
+            android:textColor="@color/orange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="4.5" />
+
+        <TextView
+            android:id="@+id/feedbackCount"
+            style="@style/ElementText"
+            android:layout_marginStart="@dimen/margin_2"
+            android:textColor="@color/gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="(58)" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/product_card_add_button"
+        android:src="@drawable/icon_plus"
+        android:layout_marginTop="@dimen/margin_16"
+        app:layout_constraintTop_toTopOf="@id/ratingContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

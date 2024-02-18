@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.example.core.NavigationManager
+import com.example.core.interfaces.NavigationManager
 import com.example.onlinestore.databinding.ActivityMainBinding
 import com.example.onlinestore.di.AppComponentProvider
 import com.example.setting_provider.SettingProvider
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), NavigationManager {
             if (settingProvider.isRegistrationComplete()) {
                 startBottomNavigation()
             } else {
-                navController.setGraph(com.example.registration.R.navigation.registration_graph)
+                startRegistrationNavigation()
             }
         }
     }
@@ -49,6 +49,11 @@ class MainActivity : AppCompatActivity(), NavigationManager {
             isVisible = true
             setupWithNavController(navController)
         }
+    }
+
+    override fun startRegistrationNavigation() {
+        navController.setGraph(com.example.registration.R.navigation.registration_graph)
+        binding.bottomNavigationView.isVisible = false
     }
 
 }
