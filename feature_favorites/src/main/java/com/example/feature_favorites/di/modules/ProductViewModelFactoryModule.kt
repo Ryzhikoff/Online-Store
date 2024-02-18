@@ -2,7 +2,6 @@ package com.example.feature_favorites.di.modules
 
 import com.example.database.domain.ProductDeleteFromFavoritesUseCase
 import com.example.database.domain.ProductIsFavoritesUseCase
-import com.example.database.domain.ProductSaveToFavoriteUseCase
 import com.example.feature_favorites.utils.ProductsViewModelFactory
 import com.example.remote.domain.GetProductListUseCase
 import dagger.Module

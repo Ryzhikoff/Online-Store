@@ -6,7 +6,6 @@ import com.example.database.domain.ClearDatabaseUseCase
 import com.example.database.domain.GetCountElementUseCase
 import com.example.setting_provider.SettingProvider
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch

@@ -20,7 +20,6 @@ import com.example.feature_favorites.di.FavoritesComponentProvider
 import com.example.feature_favorites.di.modules.FavoritesContextProvideModule
 import com.example.onlinestore.di.AppComponent
 import com.example.onlinestore.di.AppComponentProvider
-import com.example.onlinestore.di.ContextProviderModule
 import com.example.onlinestore.di.DaggerAppComponent
 import com.example.registration.di.DaggerRegistrationComponent
 import com.example.registration.di.RegistrationComponent
@@ -36,10 +35,6 @@ class App : Application(),
     DetailsComponentProvider,
     AccountComponentProvider,
     FavoritesComponentProvider {
-
-    private val contextProviderModule by lazy {
-        ContextProviderModule(this)
-    }
 
     private val settingProviderModule by lazy {
         SettingProviderModule(this)

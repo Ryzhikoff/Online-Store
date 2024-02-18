@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.database.domain.ProductDeleteFromFavoritesUseCase
 import com.example.database.domain.ProductIsFavoritesUseCase
-import com.example.database.domain.ProductSaveToFavoriteUseCase
 import com.example.feature_favorites.ui.ProductViewModel
 import com.example.remote.domain.GetProductListUseCase
 import javax.inject.Inject

@@ -13,7 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.core.extensions.getParcelableArrayListCompat
 import com.example.core.models.ProductUi
 import com.example.core.ui.product_rv.ProductAdapter
 import com.example.core.ui.product_rv.SpacingItemDecoration
@@ -61,8 +60,8 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
             viewModel.apiResult.collect { result ->
                 result.updateAdapterList {
                     view?.findViewById<ProgressBar>(R.id.progressBar)?.isVisible = false
-                    @Suppress("UNCHECKED_CAST")
                     cashedItems.clear()
+                    @Suppress("UNCHECKED_CAST")
                     cashedItems.addAll(it as List<ProductUi>)
                     productAdapter.submitList(it)
                 }
@@ -124,7 +123,7 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
     }
 
     companion object {
-        const val KEY_PRODUCTS_LIST = "items_list"
+//        const val KEY_PRODUCTS_LIST = "items_list"
         const val MARGIN_AFTER_ITEMS_IN_DP = 7
     }
 }

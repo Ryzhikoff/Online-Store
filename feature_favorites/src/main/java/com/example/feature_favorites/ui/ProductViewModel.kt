@@ -6,7 +6,6 @@ import com.example.feature_favorites.models.toProductUiList
 import com.example.core.models.ProductUi
 import com.example.database.domain.ProductDeleteFromFavoritesUseCase
 import com.example.database.domain.ProductIsFavoritesUseCase
-import com.example.database.domain.ProductSaveToFavoriteUseCase
 import com.example.remote.data.dto.ProductListDto
 import com.example.remote.domain.GetProductListUseCase
 import com.example.remote.models.ApiResult

@@ -4,7 +4,6 @@ import com.example.database.domain.ProductDeleteFromFavoritesUseCase
 import com.example.database.domain.ProductIsFavoritesUseCase
 import com.example.database.domain.ProductSaveToFavoriteUseCase
 import com.example.database.data.repository.DatabaseRepository
-import com.example.database.di.modules.DatabaseModule
 import com.example.database.domain.GetCountElementUseCase
 import dagger.Module
 import dagger.Provides
