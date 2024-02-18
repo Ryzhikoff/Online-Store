@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/Title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_page_title_top"
+        android:text="@string/title_account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_24"
+        app:layout_constraintBottom_toTopOf="@id/exitButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintVertical_bias="0">
+
+        <LinearLayout
+            android:id="@+id/fieldContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.example.account.ui.customview.AccountFieldView
+                android:id="@+id/person"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:accountFieldIcon="@drawable/icon_account" />
+
+            <com.example.account.ui.customview.AccountFieldView
+                android:id="@+id/favorites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_24"
+                app:accountFieldIcon="@drawable/icon_heart_non_active"
+                app:accountFieldTitle="@string/favorites" />
+
+            <com.example.account.ui.customview.AccountFieldView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:accountFieldIcon="@drawable/icon_shop"
+                app:accountFieldTitle="@string/shops" />
+
+            <com.example.account.ui.customview.AccountFieldView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:accountFieldIcon="@drawable/icon_feedback"
+                app:accountFieldTitle="@string/feedback" />
+
+            <com.example.account.ui.customview.AccountFieldView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:accountFieldIcon="@drawable/icon_offer"
+                app:accountFieldTitle="@string/offer" />
+
+            <com.example.account.ui.customview.AccountFieldView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:accountFieldIcon="@drawable/icon_refund"
+                app:accountFieldTitle="@string/refund" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="0dp"
+        style="@style/ButtonText2"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_32"
+        android:background="@drawable/input_field_background"
+        app:backgroundTint="@null"
+        android:text="@string/exit"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

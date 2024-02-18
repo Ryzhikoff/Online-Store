@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), NavigationManager {
             if (settingProvider.isRegistrationComplete()) {
                 startBottomNavigation()
             } else {
-                navController.setGraph(com.example.registration.R.navigation.registration_graph)
+                startRegistrationNavigation()
             }
         }
     }
@@ -49,6 +49,11 @@ class MainActivity : AppCompatActivity(), NavigationManager {
             isVisible = true
             setupWithNavController(navController)
         }
+    }
+
+    override fun startRegistrationNavigation() {
+        navController.setGraph(com.example.registration.R.navigation.registration_graph)
+        binding.bottomNavigationView.isVisible = false
     }
 
 }

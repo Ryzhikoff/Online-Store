@@ -1,7 +1,8 @@
 package com.example.details.di
 
-import com.example.database.di.DatabaseModule
-import com.example.database.di.DatabaseUseCaseModule
+import com.example.database.di.modules.DatabaseModule
+import com.example.database.di.modules.DatabaseUseCaseModule
+import com.example.details.di.modules.DetailsContextProviderModule
 import com.example.details.di.modules.DetailsViewModeProviderModule
 import com.example.details.ui.DetailViewModel
 import com.example.details.ui.DetailsFragment
@@ -13,7 +14,8 @@ import javax.inject.Singleton
     modules = [
         DatabaseModule::class,
         DatabaseUseCaseModule::class,
-        DetailsViewModeProviderModule::class
+        DetailsViewModeProviderModule::class,
+        DetailsContextProviderModule::class
     ]
 )
 interface DetailsComponent {

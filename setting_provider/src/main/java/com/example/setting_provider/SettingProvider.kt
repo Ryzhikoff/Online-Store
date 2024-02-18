@@ -5,4 +5,5 @@ interface SettingProvider {
     fun getUserData(): UserData
     fun isRegistrationComplete(): Boolean
     fun registrationComplete()
+    fun clearData()
 }

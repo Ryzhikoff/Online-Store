@@ -18,4 +18,11 @@ class DatabaseRepositoryImpl @Inject constructor(
     override suspend fun getProductEntity(id: String): ProductIdEntity? =
         productIdDao.getProductIdById(id)
 
+    override suspend fun clear() {
+        productIdDao.deleteAll()
+    }
+
+    override suspend fun getCountElement(): Long =
+        productIdDao.getCountElement()
+
 }

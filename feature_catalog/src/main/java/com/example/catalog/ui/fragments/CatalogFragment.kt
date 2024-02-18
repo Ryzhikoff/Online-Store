@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -18,9 +19,9 @@ import com.example.catalog.databinding.FragmentCatalogBinding
 import com.example.catalog.di.CatalogComponentProvider
 import com.example.catalog.ui.CatalogViewModel
 import com.example.catalog.ui.customview.TagView
-import com.example.catalog.ui.rv.ProductAdapter
+import com.example.core.ui.product_rv.ProductAdapter
 import com.example.core.interfaces.ProductAdapterItem
-import com.example.catalog.ui.rv.SpacingItemDecoration
+import com.example.core.ui.product_rv.SpacingItemDecoration
 import com.example.catalog.utils.CatalogViewModelFactory
 import com.example.core.models.ProductUi
 import com.example.details.ui.DetailsFragment.Companion.KEY_PRODUCT_UI
@@ -36,9 +37,9 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
     @Inject
     lateinit var viewModelFactory: CatalogViewModelFactory
+    private val viewModel: CatalogViewModel by viewModels { viewModelFactory }
 
     private val cashedItems = mutableListOf<ProductUi>()
-    private val viewModel: CatalogViewModel by viewModels { viewModelFactory }
 
     // соответствует позиции в списке для спиннера
     private var currentTypeSort = -1
@@ -79,6 +80,7 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.apiResult.collect { result ->
                 result.updateAdapterList {
+                    binding.progressBar.isVisible = false
                     @Suppress("UNCHECKED_CAST")
                     cashedItems.addAll(it as List<ProductUi>)
                     updateAdapterList()
@@ -90,7 +92,6 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private fun updateAdapterList(products: List<ProductUi> = cashedItems) {
         productAdapter.submitList(products)
     }

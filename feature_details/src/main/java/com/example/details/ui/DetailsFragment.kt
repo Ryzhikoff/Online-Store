@@ -11,12 +11,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.core.extensions.formEnding
 import com.example.core.extensions.getParcelableCompat
 import com.example.core.models.ProductUi
 import com.example.core.ui.viewpager.VpAdapter
 import com.example.details.R
 import com.example.details.databinding.FragmentDetailsBinding
-import com.example.details.di.modules.DetailsComponentProvider
+import com.example.details.di.DetailsComponentProvider
 import com.example.details.ui.cistomview.CharacteristicsView
 import com.example.details.utils.DetailsViewModelFactory
 import javax.inject.Inject
@@ -71,7 +72,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
             val countRating = productUi.feedbackCounts.toString()
             val availableText = getString(
-                R.string.avaliable, "$countRating ${formEnding(countRating.last(), R.array.counters)}"
+                R.string.avaliable, "$countRating ${countRating.last().formEnding(resources, R.array.counters)}"
             )
             available.text = availableText
 
@@ -81,7 +82,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 rating.text = productUi.rating.toString()
 
                 val countFeedbacks = productUi.feedbackCounts.toString()
-                val feedbacksText = "$countFeedbacks ${formEnding(countFeedbacks.last(), R.array.feedbacks)}"
+                val feedbacksText = "$countFeedbacks ${countFeedbacks.last().formEnding(resources, R.array.feedbacks)}"
                 feedbacks.text = feedbacksText
             }
 
@@ -189,28 +190,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         super.onDestroyView()
         _binding = null
     }
-
-    private fun formEnding(char: Char, @ArrayRes stringArray: Int): String =
-        when (char) {
-            '0', '5', '6', '7', '8', '9' -> resources.getStringArray(stringArray)[0]
-            '1' -> resources.getStringArray(stringArray)[1]
-            '2', '3', '4' -> resources.getStringArray(stringArray)[2]
-            else -> ""
-        }
-
-
-    /*
-    0 штук отзыввов
-    1 штука отзыв
-    2 штуки отзыва
-    3 штуки отзыва
-    4 штуки отзыва
-    5 штук отзывов
-    6 штук отзывов
-    7 штук отзывов
-    8 штук отзывов
-    9 штук отзывов
-     */
 
     companion object {
         const val KEY_PRODUCT_UI = "product_ui"
