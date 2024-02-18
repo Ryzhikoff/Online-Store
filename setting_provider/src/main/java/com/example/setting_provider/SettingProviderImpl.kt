@@ -15,6 +15,7 @@ class SettingProviderImpl(applicationContext: Context) : SettingProvider {
                 putString(FIELD_NAME, name)
                 putString(FIELD_SURNAME, surname)
                 putString(FIELD_PHONE_NUMBER, phoneNumber)
+                apply()
             }
         }
     }
@@ -33,6 +34,13 @@ class SettingProviderImpl(applicationContext: Context) : SettingProvider {
     override fun registrationComplete() {
         sharedPreferences.edit().apply {
             putBoolean(FIELD_REGISTRATION_COMPLETE, true)
+            apply()
+        }
+    }
+
+    override fun clearData() {
+        sharedPreferences.edit {
+            clear()
             apply()
         }
     }

@@ -10,6 +10,7 @@
     <dimen name="margin_10">10dp</dimen>
     <dimen name="margin_11">11dp</dimen>
     <dimen name="margin_12">12dp</dimen>
+    <dimen name="margin_13">13dp</dimen>
     <dimen name="margin_14">14dp</dimen>
     <dimen name="margin_15">15dp</dimen>
     <dimen name="margin_16">16dp</dimen>
@@ -17,6 +18,7 @@
     <dimen name="margin_21">21dp</dimen>
     <dimen name="margin_22">22dp</dimen>
     <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_28">28dp</dimen>
     <dimen name="margin_32">32dp</dimen>
     <dimen name="margin_34">34dp</dimen>
     <dimen name="padding_3">3dp</dimen>
@@ -27,19 +29,26 @@
     <dimen name="padding_12">12dp</dimen>
 
     <dimen name="corner_radius">8dp</dimen>
+    <dimen name="corner_radius_large">8dp</dimen>
     <dimen name="corner_radius_small">4dp</dimen>
     <dimen name="corner_radius_tag_view">100dp</dimen>
+
     <dimen name="error_border_width">1dp</dimen>
     <dimen name="icon_size">24dp</dimen>
     <dimen name="icon_size_tag_view">20dp</dimen>
     <dimen name="detail_image_height">368dp</dimen>
     <dimen name="viewpager_indicator_size_small">8dp</dimen>
     <dimen name="viewpager_indicator_size_large">10dp</dimen>
+    <dimen name="product_card_border_width">@dimen/error_border_width</dimen>
 
     <dimen name="star_view_icon_width">16dp</dimen>
     <dimen name="star_view_icon_height">20dp</dimen>
     <dimen name="star_view_margin_horizontal">3dp</dimen>
     <dimen name="star_view_margin_vertical">5dp</dimen>
+
+    <dimen name="height_image_placeholder">144dp</dimen>
+    <dimen name="viewpager_indicator_size">4dp</dimen>
+    <dimen name="icon_size_small">13dp</dimen>
 
     <dimen name="dot_size">2dp</dimen>
 

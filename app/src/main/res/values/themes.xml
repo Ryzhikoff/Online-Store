@@ -36,4 +36,10 @@
     <style name="SpinnerStyle">
         <item name="icon">@drawable/icon_down_arrow</item>
     </style>
+
+    <style name="SegmentedButton" parent="Widget.AppCompat.ButtonBar">
+        <item name="background">@drawable/segmented_button_background</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
 </resources>

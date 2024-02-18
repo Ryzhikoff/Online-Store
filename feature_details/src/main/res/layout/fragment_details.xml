@@ -305,15 +305,15 @@
                 app:layout_constraintTop_toBottomOf="@id/brandButton"
                 tools:text="Пенка для лица Глубокое очищение содержит минеральную воду и соду, способствует глубокому очищению пор от различных загрязнений, контролирует работу сальных желез, сужает поры. Обладает мягким антисептическим действием, не пересушивая кожу. Минеральная вода тонизирует и смягчает кожу." />
 
-            <com.google.android.material.button.MaterialButton
+            <TextView
                 android:id="@+id/hideAndShowDescription"
                 style="@style/ButtonText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_10"
                 android:background="@android:color/transparent"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingTop="@dimen/margin_10"
                 android:text="@string/button_hide"
                 android:textAllCaps="false"
                 android:textColor="@color/gray"
@@ -385,9 +385,9 @@
                 style="@style/ButtonText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/margin_10"
                 android:clickable="true"
                 android:focusable="true"
+                android:paddingTop="@dimen/margin_10"
                 android:text="@string/button_show"
                 android:textAllCaps="false"
                 android:textColor="@color/gray"

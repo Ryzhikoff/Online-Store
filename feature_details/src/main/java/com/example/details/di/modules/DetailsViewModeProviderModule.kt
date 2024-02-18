@@ -1,7 +1,7 @@
 package com.example.details.di.modules
 
-import com.example.database.di.DatabaseModule
-import com.example.database.di.DatabaseUseCaseModule
+import com.example.database.di.modules.DatabaseModule
+import com.example.database.di.modules.DatabaseUseCaseModule
 import com.example.database.domain.ProductDeleteFromFavoritesUseCase
 import com.example.database.domain.ProductSaveToFavoriteUseCase
 import com.example.details.utils.DetailsViewModelFactory
