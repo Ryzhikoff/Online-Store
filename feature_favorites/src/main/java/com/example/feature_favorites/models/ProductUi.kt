@@ -22,7 +22,8 @@ suspend fun ProductListDto.toProductUiList(isFavoritesUseCase: ProductIsFavorite
             isFavorite = isFavoritesUseCase.execute(item.id),
             description = item.description,
             ingredients = item.ingredients,
-            info = getListPairs(item.info)
+            info = getListPairs(item.info),
+            available = item.available,
         )
     }
     return list

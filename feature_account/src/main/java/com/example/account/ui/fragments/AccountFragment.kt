@@ -72,9 +72,8 @@ class AccountFragment: Fragment(R.layout.fragment_account) {
     }
 
     private fun setCountProducts(count: Long) {
-        val countStr = count.toString()
         binding.favorites.setContent(
-            extraText = "$countStr ${countStr.last().formEnding(resources, R.array.products)}"
+            extraText = "$count ${count.formEnding(resources, R.array.products)}"
         )
     }
 
