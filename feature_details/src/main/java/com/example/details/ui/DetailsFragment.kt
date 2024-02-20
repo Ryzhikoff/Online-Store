@@ -69,9 +69,8 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
             addFavoriteButton.isSelected = productUi.isFavorite
 
-            val countRating = productUi.feedbackCounts.toString()
             val availableText = getString(
-                R.string.avaliable, "$countRating ${countRating.last().formEnding(resources, R.array.counters)}"
+                R.string.avaliable, "${productUi.available} ${productUi.available.formEnding(resources, R.array.counters)}"
             )
             available.text = availableText
 
@@ -80,8 +79,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 starsView.setRating(it)
                 rating.text = productUi.rating.toString()
 
-                val countFeedbacks = productUi.feedbackCounts.toString()
-                val feedbacksText = "$countFeedbacks ${countFeedbacks.last().formEnding(resources, R.array.feedbacks)}"
+                val feedbacksText = "${productUi.feedbackCounts} ${productUi.feedbackCounts?.formEnding(resources, R.array.feedbacks)}"
                 feedbacks.text = feedbacksText
             }
 

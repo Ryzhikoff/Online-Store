@@ -21,7 +21,8 @@ data class ProductUi(
     var isFavorite: Boolean = false,
     val description: String,
     val ingredients: String,
-    val info: List<Pair<String, String>>
+    val info: List<Pair<String, String>>,
+    val available: Int,
 ) : ProductAdapterItem, Parcelable
 
 private fun getDrawableResIds(id: String): List<Int> =
